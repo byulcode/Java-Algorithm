@@ -1,11 +1,9 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
-public class Main {
+public class Main{
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
@@ -13,9 +11,11 @@ public class Main {
         long P = Integer.parseInt(st.nextToken());
         long N = Integer.parseInt(st.nextToken());
 
-        long answer = K * (long)Math.pow(P, N);
-        answer = answer % 1000000007;
+        for(int i=0;i<N;i++){
+            K *= P;
+            K %= 1000000007;
+        }
 
-        System.out.println(answer);
+        System.out.println(K);
     }
 }
