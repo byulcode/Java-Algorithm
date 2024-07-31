@@ -31,7 +31,7 @@ class Main {
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if(map[i][j] == 2){
+				if (map[i][j] == 2) {
 					virusPositions.add(new int[] {i, j});
 					map[i][j] = 0;
 				}
@@ -55,7 +55,7 @@ class Main {
 		for (int i = start; i < virusPositions.size(); i++) {
 			selectedVirus.add(virusPositions.get(i));
 			backtracking(i + 1, k + 1);
-			selectedVirus.remove(selectedVirus.size() -1);
+			selectedVirus.remove(selectedVirus.size() - 1);
 		}
 	}
 
@@ -85,19 +85,14 @@ class Main {
 			}
 		}
 
-		boolean allInfected = true;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if (map[i][j] == 0 && !visited[i][j]) { // 수정된 부분
-					allInfected = false;
-					break;
+				if (map[i][j] == 0 && !visited[i][j]) {
+					return;
 				}
 			}
-			if (!allInfected) break;
 		}
 
-		if (allInfected) {
-			result = Math.min(result, maxTime);
-		}
+		result = Math.min(result, maxTime);
 	}
 }
